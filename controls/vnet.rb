@@ -35,7 +35,7 @@ control "portefaix-azure-#{portefaix_version}-#{portefaix_req}" do
   
   ref "Portefaix Azure #{portefaix_version}, #{portefaix_section}"
 
-  describe azure_virtual_networks(resource_group: resource_group) do
+  describe azure_resource_groups do
     it { should exist }
     its('tags') { should include("made-by": 'terraform') }
   end
