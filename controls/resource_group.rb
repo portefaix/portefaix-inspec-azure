@@ -12,20 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# resource_group = attribute('resourcegroup', description:'Azure resource group')
+resource_group = attribute('resourcegroup', description:'Azure resource group')
 
 portefaix_version = input('portefaix_version')
 portefaix_section = 'vnet'
 
-title "Resource Group standards"
+title "VNet standards"
 
-# RG.1
+# VNET.1
 # =======================================================
 
 portefaix_req = "#{portefaix_section}.1"
 
 control "portefaix-azure-#{portefaix_version}-#{portefaix_req}" do
-  title "Ensure that resource groups have tags"
+  title "Ensure that virtual networks have tags"
   impact 1.0
 
   tag standard: "portefaix"
@@ -37,6 +37,7 @@ control "portefaix-azure-#{portefaix_version}-#{portefaix_req}" do
 
   describe azure_virtual_networks(resource_group: resource_group) do
     it { should exist }
+    its('tags') { should include(service: 'vpc') }
     its('tags') { should include("made-by": 'terraform') }
   end
 
