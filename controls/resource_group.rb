@@ -35,6 +35,7 @@ control "portefaix-azure-#{portefaix_version}-#{portefaix_req}" do
 
   describe azure_resource_groups do
     it { should exist }
+    its('tags') { should include("service")
     its('tags') { should include("made-by": 'terraform') }
   end
 
