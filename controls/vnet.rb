@@ -15,7 +15,7 @@
 # resource_group = attribute('resourcegroup', description:'Azure resource group')
 
 portefaix_version = input('portefaix_version')
-portefaix_section = 'vnet'
+portefaix_section = 'resource_group'
 
 title "Resource Group standards"
 
